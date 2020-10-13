@@ -26,15 +26,53 @@ class ViewController: UIViewController {
         greenLightsView.alpha = 0.3
         
         startButton.layer.cornerRadius = 10
-        
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func startButtonPressed() {
+//        let on: CGFloat = 1
+//        let off = redLightsView.alpha
         startButton.setTitle("NEXT", for: .normal)
-        
-        redLightsView.alpha = 1
-        
+//
+//        redLightsView.alpha = 1
+        print("кнопка нажата")
+        print("\(redLightsView.alpha)  \(yellowLightsView.alpha) \(greenLightsView.alpha)")
+
+        switch (redLightsView.alpha,
+                yellowLightsView.alpha,
+                greenLightsView.alpha) {
+        case (0.30000001192092896, 0.30000001192092896, 0.30000001192092896):
+            redLightsView.alpha = 1
+        case (1, 0.30000001192092896, 0.30000001192092896):
+            redLightsView.alpha = 0.3
+            yellowLightsView.alpha = 1
+        case (0.30000001192092896, 1, 0.30000001192092896):
+            yellowLightsView.alpha = 0.3
+            greenLightsView.alpha = 1
+        case (0.30000001192092896, 0.30000001192092896, 1):
+            greenLightsView.alpha = 0.3
+            redLightsView.alpha = 1
+        default:
+            break
+        }
+        /*
+        switch (redLightsView.alpha,
+                yellowLightsView.alpha,
+                greenLightsView.alpha) {
+        case (0.30000001192092896, 0.30000001192092896, 0.30000001192092896):
+            redLightsView.alpha = 1
+        case (1, 0.30000001192092896, 0.30000001192092896):
+            redLightsView.alpha = 0.3
+            yellowLightsView.alpha = 1
+        case (0.30000001192092896, 1, 0.30000001192092896):
+            yellowLightsView.alpha = 0.3
+            greenLightsView.alpha = 1
+        case (0.30000001192092896, 0.30000001192092896, 1):
+            greenLightsView.alpha = 0.3
+            redLightsView.alpha = 1
+        default:
+            break
+        }
+        */
     }
     
 }
