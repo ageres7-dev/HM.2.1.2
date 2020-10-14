@@ -15,64 +15,46 @@ class ViewController: UIViewController {
     
     @IBOutlet var startButton: UIButton!
     
-    private var currentLightsView: UIView? = nil
+    private var currentLightsView: UIView?
+    private let onLights: CGFloat = 1
+    private let offLights: CGFloat = 0.3
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        redLightsView.layer.cornerRadius = 50
-        yellowLightsView.layer.cornerRadius = 50
-        greenLightsView.layer.cornerRadius = 50
+        redLightsView.layer.cornerRadius =
+            redLightsView.frame.width / 2
+        yellowLightsView.layer.cornerRadius =
+            yellowLightsView.frame.width / 2
+        greenLightsView.layer.cornerRadius =
+            greenLightsView.frame.width / 2
         
-        redLightsView.alpha = 0.3
-        yellowLightsView.alpha = 0.3
-        greenLightsView.alpha = 0.3
+        redLightsView.alpha = offLights
+        yellowLightsView.alpha = offLights
+        greenLightsView.alpha = offLights
         
         startButton.layer.cornerRadius = 10
     }
 
     @IBAction func startButtonPressed() {
         startButton.setTitle("NEXT", for: .normal)
-       
-        //working code
+        
         if currentLightsView == nil {
-            redLightsView.alpha = 1
+            redLightsView.alpha = onLights
             currentLightsView = redLightsView
         } else if currentLightsView == redLightsView {
-            currentLightsView?.alpha = 0.3
+            currentLightsView?.alpha = offLights
             currentLightsView = yellowLightsView
-            currentLightsView?.alpha = 1
+            currentLightsView?.alpha = onLights
         } else if currentLightsView == yellowLightsView {
-            currentLightsView?.alpha = 0.3
+            currentLightsView?.alpha = offLights
             currentLightsView = greenLightsView
-            currentLightsView?.alpha = 1
+            currentLightsView?.alpha = onLights
         } else if currentLightsView == greenLightsView {
-            currentLightsView?.alpha = 0.3
+            currentLightsView?.alpha = offLights
             currentLightsView = redLightsView
-            currentLightsView?.alpha = 1
+            currentLightsView?.alpha = onLights
         }
-        
-        /*
-        // тоже работающий но ужасный вариант
-        switch (redLightsView.alpha,
-                yellowLightsView.alpha,
-                greenLightsView.alpha) {
-        case (0.30000001192092896, 0.30000001192092896, 0.30000001192092896):
-            redLightsView.alpha = 1
-        case (1, 0.30000001192092896, 0.30000001192092896):
-            redLightsView.alpha = 0.3
-            yellowLightsView.alpha = 1
-        case (0.30000001192092896, 1, 0.30000001192092896):
-            yellowLightsView.alpha = 0.3
-            greenLightsView.alpha = 1
-        case (0.30000001192092896, 0.30000001192092896, 1):
-            greenLightsView.alpha = 0.3
-            redLightsView.alpha = 1
-        default: break
-        }
-        */
-    
     }
-    
 }
 
